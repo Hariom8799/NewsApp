@@ -1,21 +1,32 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
-import Loading from './Loading';
+import Loading from './Loading'
 
 export class News extends Component {
+  static propTypes = {
+
+  }
   constructor(){
     super();
     this.state ={
       articles : [],
       loading : false,
-      page : 1
-    }
-
-    
+      page : 1,
+      country : [],
+      language: []
+    } 
   }
 
+
+  // fetch = async ()=>{
+  //     let apiurl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=e08ef77a4d974d1ab15ec9bb6d0b188d&page=${ele}&pageSize=${this.props.pageSize}`
+  //     this.setState({loading:true})
+  //     let data = await fetch(apiurl)
+  //     let parseData = await data.json()
+      
+  // }
   fetchData = async (ele)=>{
-      let apiurl = `https://newsapi.org/v2/top-headlines?country=in&apiKey=e08ef77a4d974d1ab15ec9bb6d0b188d&page=${ele}&pageSize=${this.props.pageSize}`
+      let apiurl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=e08ef77a4d974d1ab15ec9bb6d0b188d&page=${ele}&pageSize=${this.props.pageSize}`
       this.setState({loading:true})
       let data = await fetch(apiurl)
       let parseData = await data.json()
